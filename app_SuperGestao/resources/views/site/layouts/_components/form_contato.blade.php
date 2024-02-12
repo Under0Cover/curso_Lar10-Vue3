@@ -26,3 +26,9 @@
         <br>
     <button type="submit" class="{{ $classe_borda }}">ENVIAR</button>
 </form>
+
+<div style="top: 0; left: 0; position: absolute; background-color:black; color:white">
+    <pre>
+        {{ print_r($errors) }}
+    </pre>
+</div>
