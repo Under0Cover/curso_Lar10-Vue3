@@ -8,17 +8,26 @@ use App\Models\SiteContato;
 class ContatoController extends Controller
 {
     public function contato(){
-        return view('site.contato');
+        // Array simulando as informações do banco
+        $motivo_contato = [
+            '1' =>  'Dúvidas',
+            '2' =>  'Elogio',
+            '3' =>  'Reclamação'
+        ];
+
+        return view('site.contato', [
+            'motivo_contato'    => $motivo_contato
+        ]);
     }
 
     public function salvar(Request $request){
 
-        $contato = new SiteContato();        
-        $request->validate = ([
+        $request->validate([
             'nome'              =>  'required|min:5|max:40',
             'telefone'          =>  'required|min:11|max:15',
             'email'             =>  'required',
-            'motivo_contato'    =>  'required|max:2000'
+            'motivo_contato'    =>  'required',
+            'mensagem'          =>  'required|max:2000'
         ]);
 
         /*

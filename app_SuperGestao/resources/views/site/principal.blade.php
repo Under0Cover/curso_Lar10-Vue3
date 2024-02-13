@@ -26,7 +26,8 @@
                 <div class="contato">
                     {{-- Início do Formulário --}}
                     @component('site.layouts._components.form_contato',[
-                        'classe_borda' => 'borda-branca'])
+                        'classe_borda'      => 'borda-branca',
+                        'motivo_contato'    =>  $motivo_contato])
                         <h1>Contato</h1>
                         <p>Caso tenha qualquer dúvida por favor entre em contato com nossa equipe pelo formulário abaixo.<p>
                     @endcomponent()

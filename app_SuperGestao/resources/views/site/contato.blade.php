@@ -10,7 +10,8 @@
                 <div class="contato-principal">
                     {{-- Início do Formulário --}}
                     @component('site.layouts._components.form_contato', [
-                        'classe_borda' => 'borda-preta'])
+                        'classe_borda'      => 'borda-preta',
+                        'motivo_contato'    =>  $motivo_contato])
                     @endcomponent()
                     {{-- Fim do Formulário --}}
                 </div>
