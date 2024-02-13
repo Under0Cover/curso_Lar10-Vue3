@@ -13,17 +13,13 @@ class ContatoController extends Controller
 
     public function salvar(Request $request){
 
-        $contato = new SiteContato();
-        $fields = ['nome', 'telefone', 'email', 'motivo_contato', 'mensagem'];
-
-        foreach($fields as $field){
-            $request->validate([
-                $field  =>  'required'
-            ]);
-            
-            $contato->$field = $request->input($field);
-
-        }
+        $contato = new SiteContato();        
+        $request->validate = ([
+            'nome'              =>  'required|min:5|max:40',
+            'telefone'          =>  'required|min:11|max:15',
+            'email'             =>  'required',
+            'motivo_contato'    =>  'required|max:2000'
+        ]);
 
         /*
             O Framework possibilita uma solução muito mais simples neste exemplo.
