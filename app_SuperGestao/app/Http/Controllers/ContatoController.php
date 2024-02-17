@@ -22,7 +22,7 @@ class ContatoController extends Controller
         $request->validate([
             'nome'              =>  'required|min:5|max:40',
             'telefone'          =>  'required|min:11|max:15',
-            'email'             =>  'required',
+            'email'             =>  'email',
             'motivo_contato'    =>  'required',
             'mensagem'          =>  'required|max:2000'
         ]);
@@ -48,7 +48,8 @@ class ContatoController extends Controller
             $contato->create($request->all());
         */
 
-        // $contato->save();
+        $contato->save();
+        return redirect()->route('site.index');
 
     }
 
