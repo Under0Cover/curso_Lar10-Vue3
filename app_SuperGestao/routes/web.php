@@ -8,13 +8,17 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
+use App\Http\Controllers\PosContatoController;
 
-// Regular Routes
+// Regular GET Routes
 Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
 Route::get('/sobre-nos', [SobreNosController::class, 'sobreNos'])->name('site.sobrenos');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
-Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
 Route::get('/login', [LoginController::class, 'login'])->name('site.login');
+Route::get('/pos-contato', [PosContatoController::class, 'posContato'])->name('site.pos-contato');
+
+// Regular POST Routes
+Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
 
 // App Routes
 Route::prefix('/app')->group(function() {

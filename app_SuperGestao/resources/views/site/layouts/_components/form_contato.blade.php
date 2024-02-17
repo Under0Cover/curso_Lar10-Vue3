@@ -15,18 +15,14 @@
         <br>
     <input type="text" name="email" placeholder="E-mail" class="{{ $classe_borda }}" value="{{ old('email') }}">
         <br>
-    <select name="motivo_contato" class="{{ $classe_borda }}">
+    <select name="motivo_contato_id" class="{{ $classe_borda }}">
         <option value="">Qual o motivo do contato?</option>
         @foreach($motivo_contato as $key => $motivo)
-            <option value="{{ $motivo->id }}" {{ old('motivo_contato') == $motivo->id ? 'selected' : null }}>{{ $motivo->motivo_contato }}</option>
+            <option value="{{ $motivo->id }}" {{ old('motivo_contato_id') == $motivo->id ? 'selected' : null }}>{{ $motivo->motivo_contato }}</option>
         @endforeach
     </select>
         <br>
-    <textarea name="mensagem" placeholder="Preencha aqui a sua mensagem" class="{{ $classe_borda }}">
-        @if( old('mensagem') != '')
-            {{ old('mensagem') }}
-        @endif
-    </textarea>
+    <textarea name="mensagem" placeholder="Preencha aqui a sua mensagem" class="{{ $classe_borda }}">@if( old('mensagem') != ''){{ old('mensagem') }}@endif</textarea>
         <br>
     <button type="submit" class="{{ $classe_borda }}">ENVIAR</button>
 </form>
