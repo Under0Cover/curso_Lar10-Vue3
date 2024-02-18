@@ -18,11 +18,16 @@ class ContatoController extends Controller
     }
 
     public function salvar(Request $request){
-
+        /*
+            Vou utilizar a validação unique no campo e-mail
+            apenas com o objetivo de registrar o seu funcionamento,
+            e claro, passando essa validação, temos que informar em qual tabela do banco será feita a consulta
+            Visto que, neste nosso exemplo, um usuário poderia facilmente enviar mais de um contato 
+        */
         $request->validate([
             'nome'              =>  'required|min:5|max:40',
             'telefone'          =>  'required|min:11|max:15',
-            'email'             =>  'email',
+            'email'             =>  'email|unique:site_contatos',
             'motivo_contato_id' =>  'required',
             'mensagem'          =>  'required|max:2000'
         ]);
