@@ -9,7 +9,6 @@ use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\PosContatoController;
-use App\Http\Middleware\LogAcessoMiddleware;
 
 // Regular GET Routes
 Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
