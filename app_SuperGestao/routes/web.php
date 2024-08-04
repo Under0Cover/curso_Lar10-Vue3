@@ -21,7 +21,7 @@ Route::get('/pos-contato', [PosContatoController::class, 'posContato'])->name('s
 Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
 
 // App Routes
-Route::prefix('/app')->group(function() {
+Route::middleware('autenticacao')->prefix('/app')->group(function() {
     Route::get('/clientes', [ClientesController::class, 'clientes'])->name('app.clientes');
     Route::get('/fornecedores', [FornecedoresController::class, 'fornecedores'])->name('app.fornecedores');
     Route::get('/produtos', [ProdutosController::class, 'produtos'])->name('app.produtos');
