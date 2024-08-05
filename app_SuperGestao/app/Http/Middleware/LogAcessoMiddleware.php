@@ -16,18 +16,12 @@ class LogAcessoMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        /*
-            REQUEST
-            $IP = $request->server->get('REMOTE_ADDR');
-            $ROUTE = $request->getRequestUri();
-            dd($request);
-        */
-        /*
-            Teste de funcionamento: OK!
-            // LogAcesso::create([
-            //     'log'   =>  'teste de log ' .$IP
-            // ]);
-        */
+        
+        $ip = $request->server->get('REMOTE_ADDR');
+        $rota = $request->getRequestUri();
+
+        LogAcesso::create(['log' => "IP $ip requisitou a rota $rota"]);
+        
         return $next($request);
     }
 }
