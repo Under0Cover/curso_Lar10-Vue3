@@ -14,13 +14,19 @@
             </div>
 
             <div class="informacao-pagina">
+                {{ isset($msg) ? $msg : '' }}
                 <div style="width: 30%; margin-left: auto; margin-right: auto;">
-                    <form action="" method="post">
-                        <input type="text" class="borda-preta" name="nome" id="nome" placeholder="Nome">
-                        <input type="text" class="borda-preta" name="site" id="site" placeholder="Site">
-                        <input type="text" class="borda-preta" name="uf" id="uf" placeholder="UF">
-                        <input type="text" class="borda-preta" name="email" id="email" placeholder="E-mail">
-                        <button type="submit" class="borda-preta">Cadastrar</button>
+                    <form action="{{ route('app.fornecedor.adicionar') }}" method="post">
+                        @csrf
+                        <input type="text" value="{{ old('nome') }}" class="borda-preta" name="nome" id="nome" placeholder="Nome">
+                        {{ $errors->has('nome') ? $errors->first('nome') : '' }}
+                        <input type="text" value="{{ old('site') }}" class="borda-preta" name="site" id="site" placeholder="Site">
+                        {{ $errors->has('site') ? $errors->first('site') : '' }}
+                        <input type="text" value="{{ old('uf') }}" class="borda-preta" name="uf" id="uf" placeholder="UF">
+                        {{ $errors->has('uf') ? $errors->first('uf') : '' }}
+                        <input type="text" value="{{ old('email') }}" class="borda-preta" name="email" id="email" placeholder="E-mail">
+                        {{ $errors->has('email') ? $errors->first('email') : '' }}
+                        <button type="submit" value="{{ old('') }}" class="borda-preta">Cadastrar</button>
                     </form>
                 </div>
             </div>
