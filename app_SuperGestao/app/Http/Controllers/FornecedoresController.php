@@ -22,7 +22,9 @@ class FornecedoresController extends Controller
     }
 
     public function adicionar(Request $request){
-        if($request->input('_token')){
+
+        // INCLUSÃO
+        if($request->input('_token') && empty($request->input('id'))){
             try{
                 $regras = [
                     'nome'  => 'required|min:3|max:40',
@@ -48,7 +50,31 @@ class FornecedoresController extends Controller
             }catch (Exception $e){
                 $msg = 'Algo deu errado: ' .$e->getMessage();
             }
+            return view('app.fornecedor.adicionar', ['msg' => $msg]);
         }
-        return view('app.fornecedor.adicionar', ['msg' => $msg]);
+
+        // ATUALIZAÇÃO
+        if($request->input('_token') && !empty($request->input('id'))){
+            $fornecedor = Fornecedor::find($request->input('id'));
+            $update = $fornecedor->update($request->all());
+
+            if($update){
+                $msg = 'Atualização realizada com sucesso!';
+            } else {
+                $msg = 'Atualização NÃO realizada!!';
+            }
+
+            return redirect()->route('app.fornecedor.atualizar', [  'id'    =>  $request->input('id'),
+                                                                    'msg'   =>  $msg   ]);
+        }
+
+        return view('app.fornecedor.adicionar', ['msg' => null]);
+    }
+
+    public function atualizar($id, $msg = null){
+        $fornecedor = Fornecedor::find($id);
+
+        return view('app.fornecedor.adicionar', ['fornecedor'   =>  $fornecedor,
+                                                 'msg'          =>  $msg]);
     }
 }

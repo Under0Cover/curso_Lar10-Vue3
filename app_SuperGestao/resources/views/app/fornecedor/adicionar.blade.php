@@ -14,19 +14,20 @@
             </div>
 
             <div class="informacao-pagina">
-                {{ isset($msg) ? $msg : '' }}
+                {{ isset($msg) ? $msg : null }}
                 <div style="width: 30%; margin-left: auto; margin-right: auto;">
                     <form action="{{ route('app.fornecedor.adicionar') }}" method="post">
                         @csrf
-                        <input type="text" value="{{ old('nome') }}" class="borda-preta" name="nome" id="nome" placeholder="Nome">
-                        {{ $errors->has('nome') ? $errors->first('nome') : '' }}
-                        <input type="text" value="{{ old('site') }}" class="borda-preta" name="site" id="site" placeholder="Site">
-                        {{ $errors->has('site') ? $errors->first('site') : '' }}
-                        <input type="text" value="{{ old('uf') }}" class="borda-preta" name="uf" id="uf" placeholder="UF">
-                        {{ $errors->has('uf') ? $errors->first('uf') : '' }}
-                        <input type="text" value="{{ old('email') }}" class="borda-preta" name="email" id="email" placeholder="E-mail">
-                        {{ $errors->has('email') ? $errors->first('email') : '' }}
-                        <button type="submit" value="{{ old('') }}" class="borda-preta">Cadastrar</button>
+                        <input type="hidden" value="{{ isset($fornecedor->id) ? $fornecedor->id : null }}" name="id" id="id">
+                        <input type="text" value="{{ $fornecedor->nome ?? old('nome') }}" class="borda-preta" name="nome" id="nome" placeholder="Nome">
+                        {{ $errors->has('nome') ? $errors->first('nome') : null }}
+                        <input type="text" value="{{ $fornecedor->site ?? old('site') }}" class="borda-preta" name="site" id="site" placeholder="Site">
+                        {{ $errors->has('site') ? $errors->first('site') : null }}
+                        <input type="text" value="{{ $fornecedor->uf ?? old('uf') }}" class="borda-preta" name="uf" id="uf" placeholder="UF">
+                        {{ $errors->has('uf') ? $errors->first('uf') : null }}
+                        <input type="text" value="{{ $fornecedor->email ?? old('email') }}" class="borda-preta" name="email" id="email" placeholder="E-mail">
+                        {{ $errors->has('email') ? $errors->first('email') : null }}
+                        <button type="submit" class="borda-preta">Cadastrar</button>
                     </form>
                 </div>
             </div>
