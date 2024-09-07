@@ -33,4 +33,17 @@ return [
         realpath(storage_path('framework/views'))
     ),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Pagination View Style
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the default pagination style for your application.
+    | Laravel ships with multiple pagination views like "bootstrap-5" and
+    | "tailwind". You are free to use these or create your own.
+    |
+    */
+
+    'pagination' => 'bootstrap-5',
+
 ];

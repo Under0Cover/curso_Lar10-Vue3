@@ -40,7 +40,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $fornecedores->links() }}
+                    {{ $fornecedores->appends($request)->links('pagination::bootstrap-5') }}
                 </div>
             </div>
         </div>
