@@ -14,6 +14,15 @@
             </div>
 
             <div class="informacao-pagina">
+                @if(request()->has('msg'))
+                    @php
+                        session()->flash('msg', request()->query('msg'));
+                    @endphp
+                @endif
+
+                @if(session()->has('msg'))
+                    <div>{{ session('msg') }}</div>
+                @endif
                 <div style="width: 30%; margin-left: auto; margin-right: auto;">
                     <form action="{{ route('app.fornecedor.listar') }}" method="post">
                         @csrf

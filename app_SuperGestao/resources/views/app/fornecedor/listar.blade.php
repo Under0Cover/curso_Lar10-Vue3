@@ -15,7 +15,7 @@
 
             <div class="informacao-pagina">
                 <div style="width: 90%; margin-left: auto; margin-right: auto;">
-                    <table style="border: 1px solid #000; width: 100%">
+                    <table>
                         <thead>
                             <tr>
                                 <th>Nome</th>
@@ -34,8 +34,8 @@
                                     <td>{{ $fornecedor->site }}</td>
                                     <td>{{ $fornecedor->uf }}</td>
                                     <td>{{ $fornecedor->email }}</td>
-                                    <td>Excluir</td>
-                                    <td><a href="{{ route('app.fornecedor.atualizar', $fornecedor->id) }}">Atualizar</a></td>
+                                    <td><a href="{{ route('app.fornecedor.excluir', $fornecedor->id) }}" class="link-excluir">Excluir</a></td>
+                                    <td><a href="{{ route('app.fornecedor.atualizar', $fornecedor->id) }}" class="link-atualizar">Atualizar</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

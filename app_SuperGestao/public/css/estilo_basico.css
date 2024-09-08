@@ -201,12 +201,90 @@ button:hover {
     margin: 0px 15px 0px 15px;
 }
 
-.pagination ul {
-    list-style-type: none;
+.informacao-pagina table tr {
+    min-height: 30px;
 }
 
-.pagination li {
-    display: inline;
-    margin-left: 5px;
-    margin-right: 5px;
+table {
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom, #f7f7f7, #fff);
+    width: 100%;
+    margin: 20px auto;
 }
+
+th, td {
+    padding: 15px;
+    border: none;
+    text-align: left;
+}
+
+th {
+    background-color: #337ab7;
+    color: #fff;
+}
+
+td {
+    background-color: transparent;
+}
+
+.informacao-pagina table tr:hover {
+    background-color: #b6c2ca !important;
+    cursor: pointer;
+    color: #333;
+}
+
+.link-excluir {
+    color: #ff0000;
+    text-decoration: none;
+    cursor: pointer;
+}
+  
+.link-excluir:hover {
+    color: #cc0000;
+}
+  
+.link-atualizar {
+    color: #008000;
+    text-decoration: none;
+    cursor: pointer;
+}
+  
+.link-atualizar:hover {
+    color: #006000;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    list-style: none; 
+}
+  
+.pagination li {
+    margin: 0 5px;
+}
+  
+.pagination a {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #337ab7;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+  
+.pagination a:hover {
+    background-color: #23527c;
+}
+  
+.active {
+    background-color: #e8e9ef;
+    padding: 15px;
+    color: #fff;
+    cursor: pointer;
+}
+  
