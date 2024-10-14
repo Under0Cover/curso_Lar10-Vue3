@@ -33,6 +33,9 @@ Route::middleware('autenticacao')->prefix('/app')->group(function() {
     Route::post('/fornecedor/adicionar', [FornecedoresController::class, 'adicionar'])->name('app.fornecedor.adicionar');
     Route::get('/fornecedor/atualizar/{id}', [FornecedoresController::class, 'atualizar'])->name('app.fornecedor.atualizar');
     Route::get('/fornecedor/excluir/{id}', [FornecedoresController::class, 'excluir'])->name('app.fornecedor.excluir');
-    Route::get('/produto', [ProdutosController::class, 'index'])->name('app.produto');
+    
+    // Rota do Produto utilizando o Route::resource do Laravel como aprendizado
+    Route::resource('produto', ProdutosController::class);
+    
     Route::get('/sair', [LoginController::class, 'sair'])->name('app.sair');
 });

@@ -10,9 +10,11 @@ class ProdutosController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $produtos = Produto::paginate(10);
+
+        return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all() ]);
     }
 
     /**
@@ -20,7 +22,7 @@ class ProdutosController extends Controller
      */
     public function create()
     {
-        //
+        echo 'create';
     }
 
     /**
@@ -28,7 +30,7 @@ class ProdutosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo 'store';
     }
 
     /**
@@ -36,7 +38,7 @@ class ProdutosController extends Controller
      */
     public function show(Produto $produto)
     {
-        //
+        echo 'show';
     }
 
     /**
@@ -44,7 +46,7 @@ class ProdutosController extends Controller
      */
     public function edit(Produto $produto)
     {
-        //
+        echo 'edit';
     }
 
     /**
@@ -52,7 +54,7 @@ class ProdutosController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
-        //
+        echo 'update';
     }
 
     /**
@@ -60,6 +62,6 @@ class ProdutosController extends Controller
      */
     public function destroy(Produto $produto)
     {
-        //
+        echo 'destroy';
     }
 }
