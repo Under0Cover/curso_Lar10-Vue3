@@ -27,10 +27,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('tasks', TaskController::class);
-    Route::get('tasks/create', [TaskController::class, 'create'])->name('tasks.create');
-    Route::get('user/{id}/tasks', [TaskController::class, 'userTasks']);
-    Route::post('tasks', [TaskController::class, 'store'])->name('tasks.store');
     Route::patch('task/{id}/deactivate', [TaskController::class, 'deactivateTask'])->name('tasks.deactivate');
+    Route::patch('tasks/complete', [TaskController::class, 'complete'])->name('tasks.complete');
 });
 
 require __DIR__.'/auth.php';

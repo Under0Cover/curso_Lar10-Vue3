@@ -9,7 +9,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::where('userId', auth()->id())->get();
+        $tasks = Task::where('userID', auth()->id())->get();
         return view('tasks.index', compact('tasks'));    
     }
 
@@ -29,6 +29,8 @@ class TaskController extends Controller
             'taskActive' => $request->taskActive,
             'userID' => auth()->id(),
         ]);
+
+        return redirect()->route('tasks.index')->with('success', 'Task created successfully.');
     }
 
     public function create()
@@ -45,5 +47,44 @@ class TaskController extends Controller
         $task->save();
 
         return redirect()->route('tasks.index')->with('success', 'Task deactivated successfully.');
+    }
+
+    public function show(Task $task)
+    {
+        return view('tasks.show', compact('task'));
+    }
+    
+    public function update(Request $request, Task $task)
+    {
+        $validatedData = $request->validate([
+            'taskName' => 'required|string|max:255',
+            'taskDescription' => 'required|string',
+            'taskStatus' => 'required|in:P,C',
+        ]);
+    
+        $task->taskName = $validatedData['taskName'];
+        $task->taskDescription = $validatedData['taskDescription'];
+        $task->taskStatus = $validatedData['taskStatus'];
+    
+        if ($task->taskStatus == 'C') {
+            $task->updated_at = now();
+        } else {
+            $task->updated_at = null;
+        }
+    
+        $task->save();
+    
+        return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
+    }
+    
+    public function complete(Task $task)
+    {
+        $taskId = $request->input('taskId');
+        $task = Task::findOrFail($taskId);
+        $task->taskStatus = 'C';
+        $task->updated_at = now();
+        $task->save();
+    
+        return redirect()->route('tasks.index')->with('success', 'Task marked as completed!');
     }
 }
