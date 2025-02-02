@@ -10,10 +10,11 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = [
-        'userId',
-        'taskDescription',
-        'taskStatus',
+        'taskName', 
+        'taskDescription', 
+        'taskStatus', 
         'taskActive',
+        'userID',
     ];
 
     public function up()

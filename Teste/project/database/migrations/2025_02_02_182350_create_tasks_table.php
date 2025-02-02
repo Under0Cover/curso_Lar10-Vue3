@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('taskActive', ['S', 'N']);
             $table->timestamps();
     
-            $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('userID')->references('ID')->on('users')->onDelete('cascade');
         });
     }
 

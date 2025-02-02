@@ -28,7 +28,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('tasks', TaskController::class);
     Route::get('tasks/create', [TaskController::class, 'create'])->name('tasks.create');
+    Route::get('user/{id}/tasks', [TaskController::class, 'userTasks']);
     Route::post('tasks', [TaskController::class, 'store'])->name('tasks.store');
+    Route::patch('task/{id}/deactivate', [TaskController::class, 'deactivateTask'])->name('tasks.deactivate');
 });
 
 require __DIR__.'/auth.php';
