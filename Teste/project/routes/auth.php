@@ -59,5 +59,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('log.request')->group(function(){
-    //Route::post('register', [RegisteredUserController::class, 'register']);
+    //Route::patch('tasks/deactivate', [TaskController::class, 'deactivate'])->name('tasks.deactivate');
 });

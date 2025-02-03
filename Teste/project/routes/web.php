@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('tasks', TaskController::class);
-    Route::patch('task/{id}/deactivate', [TaskController::class, 'deactivateTask'])->name('tasks.deactivate');
+    Route::post('tasks/deactivate', [TaskController::class, 'deactivate'])->name('tasks.deactivate');
     Route::patch('tasks/complete', [TaskController::class, 'complete'])->name('tasks.complete');
 });
 

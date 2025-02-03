@@ -9,7 +9,8 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::where('userID', auth()->id())->get();
+        $tasks = Task::where('userID', auth()->id())
+            ->where('taskActive', 'S')->get();
         return view('tasks.index', compact('tasks'));    
     }
 
@@ -38,15 +39,18 @@ class TaskController extends Controller
         return view('tasks.create');
     }
 
-    public function deactivateTask($id)
+    public function deactivate(Request $request)
     {
-        $task = Task::findOrFail($id);
-
-        $task->taskActive = 'N';
-
-        $task->save();
-
-        return redirect()->route('tasks.index')->with('success', 'Task deactivated successfully.');
+        $task = Task::find($request->input('taskId'));
+    
+        if ($task) {
+            $task->taskActive = 'N';
+            $task->save();
+    
+            return redirect()->route('tasks.index')->with('success', 'Task successfully deactivated!');
+        }
+    
+        return redirect()->route('tasks.index')->with('error', 'Task not found!');
     }
 
     public function show(Task $task)
